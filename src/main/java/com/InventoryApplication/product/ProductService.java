@@ -13,10 +13,12 @@ public class ProductService {
 
     private final ProductRepo productRepo;
     private final CategoryRepository categoryRepository;
+    private final ProductClient productClient;
 
-    public ProductService(ProductRepo productRepo, CategoryRepository categoryRepository) {
+    public ProductService(ProductRepo productRepo, CategoryRepository categoryRepository, ProductClient productClient) {
         this.productRepo = productRepo;
         this.categoryRepository = categoryRepository;
+        this.productClient = productClient;
     }
 
     public List<ProductResponseDto> getAllProducts() {
@@ -58,4 +60,9 @@ public class ProductService {
                 p.getDesc(),
                 p.getQuantity());
     }
+
+       public String getProductName(Long id) throws Exception {
+        return productClient.getProductName(id);
+    }
+  
 }

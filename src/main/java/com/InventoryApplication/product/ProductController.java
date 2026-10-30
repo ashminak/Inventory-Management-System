@@ -40,4 +40,9 @@ public class ProductController {
         ProductResponseDto responseDto = productService.addProduct(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
+
+    @GetMapping("/productName/{id}")
+    public String getProductName(@PathVariable Long id) throws Exception {
+    return productService.getProductName(id);
+    }
 }
